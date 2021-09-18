@@ -1,7 +1,7 @@
 ---
 title: Disabling processor core on a HP EliteBook Folio 1040 G3 to avoid random (and frequent) crashes
 ---
- 
+{% include /header.md %}
 ## The 1040 g3 : a great, but not very upgradeable laptop
 
 | ![The EliteBook 1040 g3](https://support.hp.com/doc-images/962/c05262496.jpg) | 
