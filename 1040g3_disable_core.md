@@ -17,10 +17,10 @@ Another solution would be to put the motherboard in a oven, at a temperature of 
 
 The first thing to try is then to mess around with bios settings. The first thing I tought of was to disable intel turbo boost technology (which temporalrly overclocks the processor to gain performance in specific tasks). Disabling this meant that the processor could not reach higher frequency that might be instable. However, that did not fix the problem.
 
-Similarly, I tried to disable intel's implementation of SMT ([Simultaneous multithreading](https://en.wikipedia.org/wiki/Simultaneous_multithreading)), hyperthreading. That did not fix the problem etheir 
+Similarly, I tried to disable intel's implementation of SMT ([Simultaneous multithreading](https://en.wikipedia.org/wiki/Simultaneous_multithreading)), hyperthreading. That did not fix the problem etheir.
 
 ## The actual solution 
-It turns out that thinkering with the bios settings was a good idea after all 
+It turns out that thinkering with the bios settings was a good idea after all. In the bios 
 
 ## Conclusion 
-Now I have a fully working laptop, but the performance is degraded, as the processor normaly has 2 cores, now it only has one (with hyperthreading enabled), so it's effectlively a single core processor, which is a bit crazy in 2021. Even tough, it is quite usable in everyday task and hardly noticeable. The one task where the performance degradation is most noticeable is watching youtube in 1080p 60fps, which is not possible as the video hangs regurlarly. This is due to the fact that gpu accelerated youtube playback still doesn't work by default on Linux, so it's using the cpu instead, which is also very bad for energy efficiency. I could play youtube in that quality on my 840 g1 (which had 2 working cores) without problems.
+Now I have a fully working laptop, but the performance is degraded, as the processor normaly has 2 cores, now it only has one (with hyperthreading enabled), so it's effectlively a single core processor, which is a bit crazy in 2021. Even tough, it is quite usable in everyday task and hardly noticeable. The one task where the performance degradation is most noticeable is watching youtube in 1080p 60fps, which is not possible as the video hangs regurlarly. This is due to the fact that gpu accelerated youtube playback still doesn't work by default on Linux, so it's using the cpu instead, which is also very bad for energy efficiency. I could play youtube in that quality on my 840 g1 (which had 2 working cores) without problems, with CPU acceleration. Next I will try to 
