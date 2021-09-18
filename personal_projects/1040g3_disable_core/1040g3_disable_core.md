@@ -1,7 +1,6 @@
 ---
 title: Disabling processor core on a HP EliteBook Folio 1040 G3 to avoid random (and frequent) crashes
 ---
-{% include /header.md %}
 ## The 1040 g3 : a great, but not very upgradeable laptop
 
 | ![The EliteBook 1040 g3](https://support.hp.com/doc-images/962/c05262496.jpg) | 
@@ -38,3 +37,5 @@ It turns out that tinkering with the bios settings was a good idea after all. In
 
 ## Conclusion 
 Now I have a fully working laptop, but the performance is degraded, as the processor normally has 2 cores, now it only has one (with hyperthreading enabled), so it's effectively a single core processor, which is a bit crazy in 2021. Even tough, it is quite usable in everyday task and hardly noticeable. The one task where the performance degradation is most noticeable is watching youtube in 1080p 60fps, which is not possible as the video hangs regularly. This is due to the fact that gpu accelerated youtube playback still doesn't work by default on Linux, so it's using the cpu instead, which is also very bad for energy efficiency. I could play youtube in that quality on my 840 g1 (which had 2 working cores) without problems, with CPU acceleration. Next I will try to enable hardware acceleration (or wait until it's enabled by default on Firefox in Linux, which should happen at some point)
+
+{% include footer.md %}
