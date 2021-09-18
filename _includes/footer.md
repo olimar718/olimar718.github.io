@@ -1,1 +1,1 @@
-[Home](index.md){: .btn .btn-blue}
+[Home](https://olimar718.github.io/)
