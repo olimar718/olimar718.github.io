@@ -8,3 +8,4 @@
 ### insecure Wifi in hotel
 ### PowerButton app
 ### Wifi antena advanced
+### Disabling core on 1040 g3 crashing laptop
