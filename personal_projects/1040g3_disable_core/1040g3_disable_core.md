@@ -13,7 +13,7 @@ The laptop would randomly crash to a blue screen under Windows, to a complete sy
 ## Possible solutions
 Of course a motherboard replacement would certainly fix the problem entirely, but this option is very expensive (at least 150 € if you add the shipping cost).
 
-[Ebay listing for a 1040 g3 motherboard](personal_projects/1040g3_disable_core/images/ebay_listing_for_motherboard.png)
+![Ebay listing for a 1040 g3 motherboard](images/ebay_listing_for_motherboard.png)
 
 Another solution would be to put the motherboard in a oven, at a temperature of over 120 degree Celsius, in an attempt to resolder possibly damaged solder point. In my opinion, for this specific problem it had a very low chance of success and could actually kill the motherboard entirely. But this actually a serious type of solution that works well for some type of electronics, see the relevant [Linus tech Tips video](https://www.youtube.com/watch?v=8Xanr4jkmEc) on the subject.
 
@@ -22,9 +22,9 @@ The first thing to try is then to mess around with bios settings. The first thin
 Similarly, I tried to disable intel's implementation of SMT ([Simultaneous multithreading](https://en.wikipedia.org/wiki/Simultaneous_multithreading)), hyperthreading. That did not fix the problem either.
 
 ## The actual solution 
-It turns out that tinkering with the bios settings was a good idea after all. In the bios setting, under system configuration, there is a option called `multicore`. Disabling this option will disable the second core (supposedly but there is no way to select which core to disable, in my case it turned out to be the correct one but I just got lucky). After that, the laptop worked perfectly. So, according to my investigation, this laptop has a defective processing core, which is kind of unique and rare problem, so it was hard to diagnose.
+It turns out that tinkering with the bios settings was a good idea after all. In the bios setting, under system configuration, there is a option called `Multi-processor`. Disabling this option will disable the second core (supposedly but there is no way to select which core to disable, in my case it turned out to be the correct one but I just got lucky). After that, the laptop worked perfectly. So, according to my investigation, this laptop has a defective processing core, which is kind of unique and rare problem, so it was hard to diagnose.
 
-[The multicore option](personal_projects/1040g3_disable_core/images/null.png)
+![The Multi-processor option](images/multiprocessor_option.jpg)
 
 
 ## Conclusion 
