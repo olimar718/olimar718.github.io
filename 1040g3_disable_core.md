@@ -1,6 +1,7 @@
 # Disabling processor core on a HP EliteBook Folio 1040 G3 to avoid random (and frequent) crashes
 ## The 1040 g3 : a great, but not very upgradeable laptop
 ![The EliteBook 1040 g3](https://support.hp.com/doc-images/962/c05262496.jpg)
+
 I got my hand on this laptop at the end of my internship at Kayentis (alongside many others laptop, they basically gave me the whole warehouse of used laptop that could not be used again). This was by far the best one of the lot, but it was given to me because it was defective, so I had to fix it if I wanted to use it. 
 
 This Laptop is a significant upgrade over the slightly older HP EliteBook 840 G1 that I was using before (and also got for free, trough my mom's job).
@@ -14,7 +15,9 @@ Of course a motherboard replacement would certainly fix the problem entirely, bu
 
 Another solution would be to put the motherboard in a oven, at a temperature of over 120 degree celcius, in an attemp to resolder possibly damaged solder point. In my opinion, for this specific problem it had a very low chance of sucess and could actually kill the motherboard entirely. But this actually a serious type of solution that works well for some type of electronics, see the relevant [Linus tech Tips video](https://www.youtube.com/watch?v=8Xanr4jkmEc) on the subject.
 
-The first thing to try is then to mess around with bios settings. The first thing I tought of was to disable intel turbo boost technology (which temporalrly overclocks the processor to gain performance in specific tasks), that did not fix the problem, 
+The first thing to try is then to mess around with bios settings. The first thing I tought of was to disable intel turbo boost technology (which temporalrly overclocks the processor to gain performance in specific tasks). Disabling this meant that the processor could not reach higher frequency that might be instable. However, that did not fix the problem.
+
+Similarly, I tried to disable intel's implementation of SMT ([Simultaneous multithreading](https://en.wikipedia.org/wiki/Simultaneous_multithreading)), hyperthreading. That did not fix the problem etheir 
 
 ## The actual solution 
 It turns out that thinkering with the bios settings was a good idea after all 
