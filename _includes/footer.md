@@ -1,1 +1,1 @@
-[Home](/index.md){: .btn }
+[Home](index.md){: .btn .btn-blue}
