@@ -1,6 +1,10 @@
 # Benjamin Cathelineau's personal Website
 I am a Computer science student. 
 
+|___________________________________________________________________________________________________|
+|:-----:|
+||
+
 ## Interesting personal projects :
 ### Iphone MDM bypass
 ### SysAd stuff  (personal NAS)
@@ -11,14 +15,19 @@ I am a Computer science student.
 ### The unexpected miracle keyboard fix
 ### Custom Windows Setup for autostarting mining rig
 
-|:--:| 
+|___________________________________________________________________________________________________|
+|:-----:|
+||
 
 ## Professional Experience : 
 ### Abissa
 ### Givaudan
 ### Kayentis
 
-|:--:| 
+
+|___________________________________________________________________________________________________|
+|:-----:|
+||
 
 ## Education:
 ### IUT
@@ -26,12 +35,18 @@ I am a Computer science student.
 ### Ensimag 
 ### Ensimag Master double degree
 
-|:--:| 
+
+|___________________________________________________________________________________________________|
+|:-----:|
+||
 
 ## Academic Related activities :
 ### Introduction à la recherche 
 
-|:--:| 
+
+|___________________________________________________________________________________________________|
+|:-----:|
+|| 
 
 ## Extremes political opinions 
 ### Why everyone should stop smoking cigarette and drinking alcohol
