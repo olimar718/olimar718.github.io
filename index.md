@@ -2,7 +2,7 @@
 I am a Computer science student. 
 
 |Interesting personal projects|
-|:------------------:|
+|:------------------|
 |Iphone MDM bypass|
 |SysAd stuff  (personal NAS)|
 |insecure Wifi in hotel|
@@ -12,39 +12,23 @@ I am a Computer science student.
 |The unexpected miracle keyboard fix|
 |Custom Windows Setup for autostarting mining rig|
 
+|Professional Experience|
+|:------------------|
+|Abissa|
+|Givaudan|
+|Kayentis|
 
-|___________________________________________________________________________________________________|
-|:-----:|
-||
+|Education|
+|:------------------|
+|IUT|
+|Montana State University|
+|Ensimag|
+|Ensimag Master double degree|
 
-## Professional Experience : 
-### Abissa
-### Givaudan
-### Kayentis
+|Academic Related activities|
+|:------------------|
+|Introduction à la recherche|
 
-
-|___________________________________________________________________________________________________|
-|:-----:|
-||
-
-## Education:
-### IUT
-### Montana State University
-### Ensimag 
-### Ensimag Master double degree
-
-
-|___________________________________________________________________________________________________|
-|:-----:|
-||
-
-## Academic Related activities :
-### Introduction à la recherche 
-
-
-|___________________________________________________________________________________________________|
-|:-----:|
-|| 
-
-## Extremes political opinions 
-### Why everyone should stop smoking cigarette and drinking alcohol
+|Extremes political opinions|
+|:------------------|
+|Why everyone should stop smoking cigarette and drinking alcohol|
