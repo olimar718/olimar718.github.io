@@ -1,22 +1,28 @@
 # Benjamin Cathelineau's personal Website
 I am a Computer science student. 
 
+
+
 |Interesting personal projects|
 |:------------------|
-|Iphone MDM bypass|
-|SysAd stuff  (personal NAS)|
-|insecure Wifi in hotel|
-|PowerButton app|
+|[Iphone MDM bypass](todo.md)|
+|[SysAd stuff  (personal NAS)](todo.md)|
+|[insecure Wifi in hotel](todo.md)|
+|[PowerButton app](todo.md)|
 |[Wifi antenna advanced: How to turn an old laptop into a very performant wifi antenna for your desktop computer](personal_projects/wifi_antenna_advanced/wifi_antenna_advanced.md)|
 |[Disabling core on 1040 g3 crashing laptop](personal_projects/1040g3_disable_core/1040g3_disable_core.md)|
-|The unexpected miracle keyboard fix|
-|Custom Windows Setup for autostarting mining rig|
+|[The unexpected miracle keyboard fix](todo.md)|
+|[Custom Windows Setup for autostarting mining rig](todo.md)|
+
+
 
 |Professional Experience|
 |:------------------|
 |Abissa|
 |Givaudan|
 |Kayentis|
+
+
 
 |Education|
 |:------------------|
@@ -25,10 +31,15 @@ I am a Computer science student.
 |Ensimag|
 |Ensimag Master double degree|
 
+
+
 |Academic Related activities|
 |:------------------|
-|Introduction à la recherche|
+|[Introduction à la recherche](todo.md)|
+
+
 
 |Extremes political opinions|
 |:------------------|
-|Why everyone should stop smoking cigarette and drinking alcohol|
+|[Why everyone should stop smoking cigarette and drinking alcohol](todo.md)|
+|[Why we should end the "complémentaire de santé" system](todo.md)|
