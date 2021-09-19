@@ -1,7 +1,7 @@
 # Benjamin Cathelineau's personal Website
 I am a Computer science student. 
 
-
+___
 
 |Interesting personal projects|
 |:------------------|
@@ -14,7 +14,7 @@ I am a Computer science student.
 |[The unexpected miracle keyboard fix](todo.md)|
 |[Custom Windows Setup for autostarting mining rig](todo.md)|
 
-
+___
 
 |Professional Experience|
 |:------------------|
@@ -22,7 +22,7 @@ I am a Computer science student.
 |Givaudan|
 |Kayentis|
 
-
+___
 
 |Education|
 |:------------------|
@@ -31,13 +31,13 @@ I am a Computer science student.
 |Ensimag|
 |Ensimag Master double degree|
 
-
+___
 
 |Academic Related activities|
 |:------------------|
 |[Introduction à la recherche](todo.md)|
 
-
+___
 
 |Extremes political opinions|
 |:------------------|
