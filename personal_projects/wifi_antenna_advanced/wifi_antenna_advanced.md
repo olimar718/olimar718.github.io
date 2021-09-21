@@ -88,7 +88,25 @@ After both host have been configured you can use the well known `ping` command t
 
 ### Fourth step : enable IP masquerade (NAT)
 
+This step is needed because the wireless access point that your laptop is connected to doesn't know the private subnet that you just created in the previous step. Therefore you need to setup a nat.
 
+```flow
+desktop=>operation: desktop
+(192.168.52.yyy/24) Wired
+laptop=>operation: (192.168.52.1/24) Wired
+laptop 
+(192.168.0.xxx/24) Wifi
+wifiaccess=>operation: (192.168.52.1/24) Wifi (and Wired)
+Wireless acces point
+
+desktop->laptop->wifiaccess
+```
+
+For this step you could use a low level tool like `iptable`, but I preferred to use the preinstalled (in redHat based distributions) and more friendly `firewall-cmd` command.
+
+Just run this command : `firewall-cmd --zone=external --add-masquerade --permanent`
+
+You might have to change the zone.
 
 ### Fifth step (optional): Install a DHCP server and configure it
 
