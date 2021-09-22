@@ -25,7 +25,7 @@ This solution is extremely easy to use and completely plug and play on Windows a
 
 So I was actually using this solution with one of the phone I had lying around for a while but it wasn't very satisfying in the long run. Phone are of course not meant to be used 24/7 for usb tethering, and so, in my experience it wasn't working so great for 2 reasons:
 
-- First, since I was using an older smartphone (a very unique *Asus Zenfone 2*, that actually uses an intel x86 processor instead of a ARM as you would find in almost every smartphone) the connection was using usb 2.0. This meant that the throughput, while acceptable, is fairly limited, compared to theoretical maximum of whatever version of WiFi the access point is using. Similarly I experienced latency problems when talking to people on discord, and when playing online games such as rocket league.
+- First, since I was using an older smartphone (a very unique *Asus Zenfone 2*, that actually uses an **intel x86** processor instead of a **ARM** as you would find in almost every smartphone) the connection was using **usb 2.0**. This meant that the throughput, while acceptable, is fairly limited, compared to theoretical maximum of whatever version of WiFi the access point is using. Similarly I experienced latency problems when talking to people on discord, and when playing online games such as rocket league.
 - Secondly and most importantly, the connection would randomly stop working and essentially, usb tethering would stop working spontaneously.Toggling it off and back on would fix it but that's still very annoying in the middle of a discord call. The bigger problem here is that I also use my desktop PC as a **mining rig** (whit a single *MSI gtx 1060 6gb gaming X*), and I'm often away from home (or sleeping), therefore unable to manually toggle usb tethering off and back on to make it work again. This would result in downtime for my mining rig and a (admittedly small) loss of money.
 
 Therefore I needed a better solution.
@@ -50,9 +50,11 @@ Anyway the choice of distribution really should not matter, as long as you stick
 
 ### First step : Connection to WiFi in command line
 
-Under redHat based distribution all the driver for your wifi hardware should be installed by default, even if those driver are proprietary. This is one the advantage that redHat / Fedora has over debian in my opinion
+Under redHat based distribution all the driver for your wifi hardware should be installed by default, even if those driver are proprietary. This is one the advantage that redHat / Fedora has over debian in my opinion.
 
-Now that your wifi module is working, there is a lot of different ways to connect to wifi in command line. But in my opinion, the best and easiest way is to use network manager terminal user interface or in short `nmtui`. This is a terminal user interface based program that allows you to manage the network connection of your system (be it wired or wireless) with ease, it's part of network manager. Network manager and `nmtui` should be preinstalled on redHat based distribution, even if you did not install a graphical environment. 
+Now that your wifi module is working, there is a lot of different ways to connect to wifi in command line. But in my opinion, the best and easiest way is to use network manager terminal user interface or in short `nmtui`. 
+
+This is a terminal user interface based program that allows you to manage the network connection of your system (be it wired or wireless) with ease, it's part of network manager. Network manager and `nmtui` should be preinstalled on redHat based distribution, even if you did not install a graphical environment. 
 
 However what is not preinstalled is `NetworkManager-wifi.x86_64` which is a plugin that you need in order to connect to a wifi network using `nmtui`.
 
@@ -74,9 +76,7 @@ Doing that will allow your **laptop** to act as a *router*, that means that it w
 
 ### Third step : plug in the RJ45 on both end, configure the wired network interface
 
-Now plug the cable on your **laptop** acting as a "Wifi antenna" on one hand and on your device where you do not have wifi (probably your desktop computer, let's now refer to it as **client**) on the other hand.
-
-<sub> This should work, because of auto MDI-X you don't actually need a special crossover cable, unless one of the host is extremely old (or extremely bad)</sub>
+Now plug the cable on your **laptop** acting as a "Wifi antenna" on one hand and on your device where you do not have wifi (probably your desktop computer, let's now refer to it as **client**) on the other hand. <sub> This should work, because of auto MDI-X you don't actually need a special crossover cable, unless one of the host is extremely old (or extremely bad)</sub>
 
 Now at this step you want to configure the network interface statically on the **laptop**, and for debugging purpose (or if you want to run static address all the time) on the **client**. 
 
@@ -88,9 +88,9 @@ After both host have been configured you can use the well known `ping` command t
 
 ### Fourth step : enable IP masquerade (NAT)
 
-This step is needed because the wireless access point that your laptop is connected to doesn't know the private subnet that you just created in the previous step. Therefore you need to setup a nat.$a=1 \approx 0.9$
+This step is needed because the wireless access point that your laptop is connected to doesn't know the private subnet that you just created in the previous step. Therefore you need to setup a nat.
 
-| ![Network diagram](images/network_diagram.svg) | 
+| ![Network diagram](images/network_diagram.network_diagram.png) | 
 |:--:| 
 | *Network diagram* |
 
@@ -114,6 +114,8 @@ The configuration file is then located at  `/etc/dhcp/dhcpd.conf`
 
 See my configuration file bellow for reference. You can use the same subset or you can change it. I used [cloud flare public DNS service](https://1.1.1.1/dns/), but you can use any DNS service. You can essentially use whatever you want for `domain-search`, it's useless between 2 devices anyway.
 
+___
+
 `subnet 192.168.126.0 netmask 255.255.255.0 {
         option routers                  192.168.126.1;
         option subnet-mask              255.255.255.0;
@@ -122,6 +124,8 @@ See my configuration file bellow for reference. You can use the same subset or y
         option time-offset              -18000;     # Eastern Standard Time
         range 192.168.126.10 192.168.126.100;
 }`
+
+___
 
 Once you edited the configuration file `start` and `enable` (so that it starts automatically at next boot) the service.
 `sudo systemctl start dhcpd.service`
@@ -137,7 +141,7 @@ Now I have a pretty decent connection to my desktop computer, even tough it does
 |:--:| 
 | *SpeedTest results, with a newer laptop i might be able to get more but this is already good enough* |
 
-Of course this would be different if I paid for electricity, because now I also have a LapTop running 24/7, but I don't pay for electricity so it's fine.
+Of course this would be different if I paid for electricity, because now I also have a Laptop running 24/7, but I don't pay for electricity so it's fine.
 
 | ![A picture of the setup in production](images/wifi_antenna_advanced_in_production.jpg) | 
 |:--:| 
