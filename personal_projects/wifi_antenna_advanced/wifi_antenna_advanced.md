@@ -90,7 +90,7 @@ After both host have been configured you can use the well known `ping` command t
 
 This step is needed because the wireless access point that your laptop is connected to doesn't know the private subnet that you just created in the previous step. Therefore you need to setup a nat.
 
-| ![Network diagram](images/network_diagram.network_diagram.png) | 
+| ![Network diagram](images/network_diagram.png) | 
 |:--:| 
 | *Network diagram* |
 
