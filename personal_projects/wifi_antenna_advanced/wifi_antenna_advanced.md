@@ -88,29 +88,56 @@ After both host have been configured you can use the well known `ping` command t
 
 ### Fourth step : enable IP masquerade (NAT)
 
-This step is needed because the wireless access point that your laptop is connected to doesn't know the private subnet that you just created in the previous step. Therefore you need to setup a nat.
+This step is needed because the wireless access point that your laptop is connected to doesn't know the private subnet that you just created in the previous step. Therefore you need to setup a nat.$a=1 \approx 0.9$
 
-```flow
-desktop=>operation: desktop
-(192.168.52.yyy/24) Wired
-laptop=>operation: (192.168.52.1/24) Wired
-laptop 
-(192.168.0.xxx/24) Wifi
-wifiaccess=>operation: (192.168.52.1/24) Wifi (and Wired)
-Wireless acces point
+| ![Network diagram](images/network_diagram.svg) | 
+|:--:| 
+| *Network diagram* |
 
-desktop->laptop->wifiaccess
-```
+The access point, `192.168.0.1` doesn't know the `192.168.126.0/24` subnet so you need to nat the ip packets coming from my Desktop before sending them to the access point.
 
 For this step you could use a low level tool like `iptable`, but I preferred to use the preinstalled (in redHat based distributions) and more friendly `firewall-cmd` command.
 
 Just run this command : `firewall-cmd --zone=external --add-masquerade --permanent`
 
+`masquerade` is a type of NAT where you just replace the source ip address with you ip address. So the Laptop will put their address `192.168.0.xx` (given via DHCP) in the source field of the IP header of each packet destined to the internet.
+
 You might have to change the zone.
 
 ### Fifth step (optional): Install a DHCP server and configure it
 
+I would recommend using the internet service consortium [DHCP](https://www.isc.org/dhcp/) server, which is provided by the `dhcp-server` package in redHat based distribution
+
+`dnf install dhcp-server`
+
+The configuration file is then located at  `/etc/dhcp/dhcpd.conf`
+
+See my configuration file bellow for reference. You can use the same subset or you can change it. I used [cloud flare public DNS service](https://1.1.1.1/dns/), but you can use any DNS service. You can essentially use whatever you want for `domain-search`, it's useless between 2 devices anyway.
+
+`subnet 192.168.126.0 netmask 255.255.255.0 {
+        option routers                  192.168.126.1;
+        option subnet-mask              255.255.255.0;
+        option domain-search              "benjamin.lan";
+        option domain-name-servers       1.1.1.1;
+        option time-offset              -18000;     # Eastern Standard Time
+        range 192.168.126.10 192.168.126.100;
+}`
+
+Once you edited the configuration file `start` and `enable` (so that it starts automatically at next boot) the service.
+`sudo systemctl start dhcpd.service`
+`sudo systemctl enable dhcpd.service`
+
+Now you can remove the static ip configuration and enable DHCP on the **client**, it should pick an address automatically. That also means that any device that you plug in here will get an address automatically.
+
 ## Conclusion 
+
+Now I have a pretty decent connection to my desktop computer, even tough it doesn't have WiFi, and I **paid nothing for it**. I can even play online games such as Rocket League in pretty good condition
+
+| ![speedtest results](images/speedtest_result.png) | 
+|:--:| 
+| *SpeedTest results, with a newer laptop i might be able to get more but this is already good enough* |
+
+Of course this would be different if I paid for electricity, because now I also have a LapTop running 24/7, but I don't pay for electricity so it's fine.
 
 | ![A picture of the setup in production](images/wifi_antenna_advanced_in_production.jpg) | 
 |:--:| 
