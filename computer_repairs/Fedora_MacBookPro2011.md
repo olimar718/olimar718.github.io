@@ -79,3 +79,78 @@ then run theses
 `sudo grub2-mkconfig -o /boot/grub2/grub.cfg`
 then reboot
 `systemctl reboot`
+
+
+Keep it turned of after suspend then resume :
+original source is https://www.variadic.xyz/2020/06/28/switching-off-dgpu/
+Compile and run this code after every resume
+
+`gcc -Wall outbfix.c -o outbresumefix`
+```
+#include <stdio.h> 
+#include <sys/io.h>
+
+#define PORT_SWITCH_DISPLAY     0x710
+#define PORT_SWITCH_SELECT      0x728
+#define PORT_SWITCH_DDC         0x740
+#define PORT_DISCRETE_POWER     0x750
+
+static int gmux_switch_to_igd()
+{
+    outb(1, PORT_SWITCH_SELECT);
+    outb(2, PORT_SWITCH_DISPLAY);
+    outb(2, PORT_SWITCH_DDC);
+    return 0;
+}
+
+static void mbp_gpu_power(int state)
+{
+    outb(state, PORT_DISCRETE_POWER);
+}
+
+static void mb_gpu_print()
+{
+    printf("SELECT:  %hhu\n", inb(PORT_SWITCH_SELECT));
+    printf("DISPLAY: %hhu\n", inb(PORT_SWITCH_DISPLAY));
+    printf("DDC:     %hhu\n", inb(PORT_SWITCH_DDC));
+    printf("POWER:   %hhu\n", inb(PORT_DISCRETE_POWER));
+}
+
+int main(int argc, char **argv)
+{
+    if (iopl(3) < 0) {
+        perror ("No IO permissions");
+        return 1;
+    }
+    int state=0;
+    if (argc > 1) state = atoi(argv[1]);
+    printf("Before:\n");
+    mb_gpu_print();
+    mbp_gpu_power(state);
+    gmux_switch_to_igd();
+    printf("After:\n");
+    mb_gpu_print();
+    return 0;
+}
+
+```
+Using this article https://www.addictivetips.com/ubuntu-linux-tips/run-scripts-and-commands-on-suspend-and-resume-on-linux/
+you can setup the program to run everytime the system resumes from sleep.
+
+copy your `outbresumefix` executable to `/usr/lib/systemd/system-sleep/`
+Then write this into this **new** file `/usr/lib/systemd/system-sleep/pre-suspend.sh`
+```
+#!/bin/sh
+if [ "${1}" == "pre" ]; then
+	:
+else
+	/usr/lib/systemd/systemd-sleep/outbresumefix
+fi
+
+```
+make the file executable and your good to go
+`chmod +x /usr/lib/systemd/system-sleep/pre-suspend.sh`
+
+
+you might want to do that as well because now it's failing:
+`sudo systemctl disable systemd-backlight@backlight\:acpi_video0.service`
