@@ -154,3 +154,42 @@ make the file executable and your good to go
 
 you might want to do that as well because now it's failing:
 `sudo systemctl disable systemd-backlight@backlight\:acpi_video0.service`
+
+# sensor conf 
+for `lm_sensors`
+Taken from https://www.variadic.xyz/2020/06/03/lmsensors-config/
+
+save this file as `/etc/sensors.d/applesmc.conf`
+
+```
+# this is my MacBook Pro 2011 8,2
+chip "applesmc-isa-0300"
+    label temp1 "Battery"
+    label temp27 "Palm Rest"
+    label temp4 "CPU Die Core Temp"
+    label temp8 "CPU Proximity Temp"
+    label temp9 "CPU Core 1"
+    label temp10 "CPU Core 2"
+    label temp11 "CPU Core 3"
+    label temp12 "CPU Core 4"
+    label temp16 "GPU Die"
+    label temp24 "Heatpipe 1"
+    label temp25 "Heatpipe 2"
+    ignore temp2
+    ignore temp3
+    ignore temp5
+    ignore temp6
+    ignore temp7
+    ignore temp13
+    ignore temp14
+    ignore temp15
+    ignore temp17
+    ignore temp18
+    ignore temp19
+    ignore temp20
+    ignore temp21
+    ignore temp22
+    ignore temp23
+    ignore temp26
+    ignore temp28
+```
