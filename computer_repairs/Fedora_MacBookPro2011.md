@@ -155,6 +155,23 @@ make the file executable and your good to go
 you might want to do that as well because now it's failing:
 `sudo systemctl disable systemd-backlight@backlight\:acpi_video0.service`
 
+### Update instruction
+At some point a fedora update broke my laptop, this was definitively related to this config.
+The laptop booted (there was a error related to iorw not being found on grub) to the login screen, but it would black screen if I tried to login under wayland. It would work on xorg but the fantom display was back so the fix was no longer applied.
+
+Not sure yet but in that case you do 
+this again:
+ Copy all, or just iorw.mod, to the EFI system partition
+`cp -r /usr/lib/grub/x86_64-efi /boot/efi/EFI/fedora/`
+and this again :
+then run theses
+`sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg`
+`sudo grub2-mkconfig -o /boot/grub2/grub.cfg`
+then reboot
+`systemctl reboot`
+
+
+
 # sensor conf 
 for `lm_sensors`
 Taken from https://www.variadic.xyz/2020/06/03/lmsensors-config/
