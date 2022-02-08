@@ -170,7 +170,24 @@ then run theses
 then reboot
 `systemctl reboot`
 
+### Other broken update
+Unrelated probably, the "# @" keys has switched place with the "< >" key
+The fix is moslty taken from here [https://wiki.archlinux.org/title/Apple_Keyboard#%3C_and_%3E_have_changed_place_with_^_and_%C2%B0_(or_@_and_#,_or_%60_and_~)](https://wiki.archlinux.org/title/Apple_Keyboard#%3C_and_%3E_have_changed_place_with_^_and_%C2%B0_(or_@_and_#,_or_%60_and_~)), but it's actually different (setting iso_layout to 1 instead of 0) 
 
+If that happens then you can test the fix by doing this:
+
+`echo "1" > /sys/module/hid_apple/parameters/iso_layout`
+
+Which should work imediately (if it doesn't try a different value)
+
+Then you create this file `/etc/modprobe.d/hid_apple.conf` with this content `/etc/modprobe.d/hid_apple.conf`
+
+After that you need to rebuild the initramfs, whatever that is, using this command under fedora:
+
+`dracut --force`
+
+### Other keyboard detail
+Under gnome you should probably set the "touche de charactère alternatif" to alt gauche, like this you can actually use both alt key
 
 # sensor conf 
 for `lm_sensors`
