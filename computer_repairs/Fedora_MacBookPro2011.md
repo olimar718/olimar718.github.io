@@ -144,6 +144,7 @@ Then write this into this **new** file `/usr/lib/systemd/system-sleep/pre-suspen
 if [ "${1}" == "pre" ]; then
 	:
 else
+	sleep 10 # might be useful to prevent failed resume (black non powered screen), untested
 	/usr/lib/systemd/systemd-sleep/outbresumefix
 fi
 
@@ -188,6 +189,11 @@ After that you need to rebuild the initramfs, whatever that is, using this comma
 
 ### Other keyboard detail
 Under gnome you should probably set the "touche de charactère alternatif" to alt gauche, like this you can actually use both alt key
+
+### gnome system tray extension
+I'm using this one [https://github.com/MartinPL/Tray-Icons-Reloaded](https://github.com/MartinPL/Tray-Icons-Reloaded)
+
+
 
 # sensor conf 
 for `lm_sensors`
