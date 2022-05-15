@@ -5,6 +5,8 @@ title: Fedora 35 Linux install note on a 2011 MacBook Pro
 
 
 ## WIFI
+- Enable rpm fusion non free
+go there https://rpmfusion.org/Configuration and click
 - Install wifi driver
 `dnf install broadcom-wl`
 - Install kernel header
@@ -81,12 +83,13 @@ then reboot
 `systemctl reboot`
 
 
-Keep it turned of after suspend then resume :
+Keep it turned off after suspend then resume :
 original source is https://www.variadic.xyz/2020/06/28/switching-off-dgpu/
 Compile and run this code after every resume
 
-`gcc -Wall outbfix.c -o outbresumefix`
+`gcc -Wall -Wextra -Werror -O3 outbfix.c -o outbresumefix`
 ```
+#include <stdlib.h>
 #include <stdio.h> 
 #include <sys/io.h>
 
@@ -112,7 +115,7 @@ static void mb_gpu_print()
 {
     printf("SELECT:  %hhu\n", inb(PORT_SWITCH_SELECT));
     printf("DISPLAY: %hhu\n", inb(PORT_SWITCH_DISPLAY));
-    printf("DDC:     %hhu\n", inb(PORT_SWITCH_DDC));
+    printf("DDC(Display Data Channel):     %hhu\n", inb(PORT_SWITCH_DDC));/*https://en.wikipedia.org/wiki/Display_Data_Channel*/
     printf("POWER:   %hhu\n", inb(PORT_DISCRETE_POWER));
 }
 
@@ -233,3 +236,13 @@ chip "applesmc-isa-0300"
     ignore temp26
     ignore temp28
 ```
+
+
+### NEW METHOD FOR DISABLE GPU
+STOLEN FROM HERE https://forums.macrumors.com/threads/force-2011-macbook-pro-8-2-with-failed-amd-gpu-to-always-use-intel-integrated-gpu-efi-variable-fix.2037591/page-55
+
+
+`sudo chattr -i gpu-power-prefs-fa4ce28d-b62f-4c99-9cc3-6815686e30f9` (remove imutable attribute)
+`printf "\x07\x00\x00\x00\x01\x00\x00\x00" > /sys/firmware/efi/efivars/gpu-power-prefs-fa4ce28d-b62f-4c99-9cc3-6815686e30f9` (print special value that disables the gpu)
+`sudo chattr +i gpu-power-prefs-fa4ce28d-b62f-4c99-9cc3-6815686e30f9`(add imutable attribute back)
+`sudo umount /sys/firmware/efi/efivars/` (to make sure the write is flushed) 
